@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.kapt)
@@ -7,17 +7,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.gslrealestate"
+    namespace = "com.example.gslrealestate.presentation"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.gslrealestate"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
-        testInstrumentationRunner = "com.example.gslrealestate.HiltTestRunner"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -42,10 +39,7 @@ android {
 }
 
 dependencies {
-    // Modules
-    implementation(project(":data"))
     implementation(project(":domain"))
-    implementation(project(":presentation"))
 
     // AndroidX Core
     implementation(libs.androidx.core.ktx)
@@ -80,6 +74,7 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
 
     // UI Testing
     androidTestImplementation(libs.androidx.junit)
@@ -90,3 +85,4 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
+
