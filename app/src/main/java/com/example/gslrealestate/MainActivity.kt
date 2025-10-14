@@ -4,44 +4,26 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.gslrealestate.ui.theme.GslRealEstateTheme
+import androidx.navigation.compose.rememberNavController
+import com.example.gslrealestate.navigation.NavGraph
+import com.example.gslrealestate.presentation.designsystem.theme.GslRealEstateTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Main Activity for GSL Real Estate application
+ * Annotated with @AndroidEntryPoint to enable Hilt dependency injection
+ * Following Clean Architecture and MVI pattern
+ */
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             GslRealEstateTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                val navController = rememberNavController()
+                NavGraph(navController = navController)
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    GslRealEstateTheme {
-        Greeting("Android")
     }
 }
