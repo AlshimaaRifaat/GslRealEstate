@@ -160,12 +160,12 @@ cd GslRealEstate
 
 ##  Future Enhancements
 
-- [ ] Room database for offline caching
-- [ ] DataStore for preferences
-- [ ] Firebase Crashlytics for crash reporting
-- [ ] Google Tag Manager for analytics
-- [ ] SonarQube integration
-- [ ] AWS CodeArtifact for package management
+-  Room database for offline caching
+-  DataStore for preferences
+-  Firebase Crashlytics for crash reporting
+-  Google Tag Manager for analytics
+-  SonarQube integration
+-  AWS CodeArtifact for package management
 
 ## Development Process
 
